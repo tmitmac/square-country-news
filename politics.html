@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Politics | Square Country News</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://feathericons.com/"></link>
+</head>
+<body class="bg-gray-100 font-sans">
+<style>
+    /* ---------- TICKER ---------- */
+
+        .breaking-badge {
+  position: absolute;
+  left: 0;
+  top: 50%;             /* start from vertical center */
+  transform: translateY(-50%); /* center it vertically */
+  height: 30px;          /* shorter than full carousel */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  background-color: #b31f21;
+  border-radius: 4px;   /* optional: rounded edges */
+  z-index: 60;
+}
+
+    .breaking-circle {
+      background-color: white;
+      color: #b31f21;
+      font-weight: bold;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 0.5rem;
+      font-size: 12px;
+    }
+
+    .breaking-text {
+      color: white;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+    }
+    .carousel-red {
+      background-color: #cf2323;
+      height: 45px;
+      overflow: hidden;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 50;
+    }
+
+    .carousel-track {
+      display: flex;
+      width: 200%;
+      animation: slide 60s linear infinite;
+      align-items: center;
+      height: 100%;
+    }
+
+    .carousel-item {
+      padding: 0 2rem;
+      color: white;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .carousel-item:not(:last-child)::after {
+      content: " •";
+      margin-left: 4rem;
+    }
+
+    @keyframes slide {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ---------- NAVY BAR ---------- */
+    .navy-bar {
+      position: fixed;
+      top: 45px;
+      left: 0;
+      width: 100%;
+      height: 37px;
+      background-color: #0e172a;
+      z-index: 40;
+    }
+
+    /* ---------- MAIN NAVBAR ---------- */
+    .main-navbar {
+      position: fixed;
+      top: 82px;
+      left: 0;
+      width: 100%;
+      height: 90px;
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+      z-index: 30;
+    }
+
+    body {
+      margin-top: 180px;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100">
+
+ <!-- Red ticker -->
+  <div class="carousel-red">
+    <!-- Breaking badge overlay -->
+    <div class="breaking-badge">
+      <div class="breaking-circle">!</div>
+      <span class="breaking-text">BREAKING</span>
+    </div>
+
+    <!-- News carousel behind badge -->
+    <div class="carousel-track">
+      <div class="carousel-item">Innovation Party rules out coalition with Liberty</div>
+      <div class="carousel-item">Prime Minister Sets Election Date for October 17</div>
+      <div class="carousel-item">Central Bank holds interest rates steady at 4.5%</div>
+      <div class="carousel-item">Cunningham Hawks secure spot in Grand Final</div>
+      <div class="carousel-item">Innovation Party rules out coalition with Liberty</div>
+      <div class="carousel-item">Prime Minister Sets Election Date for October 17</div>
+      <div class="carousel-item">Central Bank holds interest rates steady at 4.5%</div>
+      <div class="carousel-item">Cunningham Hawks secure spot in Grand Final</div>
+    </div>
+  </div>
+
+<!-- NAVY BAR -->
+<div class="navy-bar flex items-center justify-between px-20 text-sm text-white">
+  <span id="current-date"></span>
+  <div class="flex items-center gap-5">
+    <a href="#" class="hover:text-blue-400">Subscribe</a>
+    <span class="text-slate-500">|</span>
+    <a href="#" class="hover:text-blue-400">Newsletter</a>
+    <span class="text-slate-500">|</span>
+    <a href="#" class="hover:text-blue-400">Contact Us</a>
+  </div>
+</div>
+
+<!-- MAIN NAVBAR -->
+<nav class="main-navbar">
+  <div class="relative max-w-[1500px] mx-auto h-full px-16 flex items-center">
+
+    <!-- LOGO -->
+    <a href="index.html" class="flex items-center gap-4">
+      <div class="w-12 h-12 rounded-xl bg-slate-900"></div>
+      <div>
+        <div class="text-2xl font-extrabold text-slate-900 leading-none">
+          Square Country
+        </div>
+        <div class="text-sm font-semibold uppercase tracking-wide text-slate-500">
+          News
+        </div>
+      </div>
+    </a>
+
+    <!-- CATEGORIES -->
+    <div class="absolute left-1/2 -translate-x-[40%] flex items-center gap-8 text-sm font-semibold text-slate-600">
+      <a href="politics.html" class="hover:text-black">Politics</a>
+      <a href="#" class="hover:text-black">Business</a>
+      <a href="sports.html" class="hover:text-black">Sports</a>
+      <a href="#" class="hover:text-black">Entertainment</a>
+      <a href="#" class="hover:text-black">Technology</a>
+      <a href="#" class="hover:text-black">Opinion</a>
+      <a href="#" class="hover:text-black">World</a>
+    </div>
+
+    <!-- RIGHT CONTROLS -->
+    <div class="absolute right-16 flex items-center gap-4">
+      <a href="search.html" class="text-slate-600 hover:text-black">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z"/>
+        </svg>
+      </a>
+
+      <a href="#"
+         class="bg-[#0e172a] text-white px-5 py-2 rounded-md text-sm font-bold hover:bg-[#1e293b] transition">
+        Subscribe
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+
+
+  <!-- Main -->
+  <main class="max-w-[1350px] mx-auto px-6 py-6">
+
+
+
+    <!-- Section Title -->
+    <div class="mb-6">
+      <div class="flex items-center gap-2 mb-1">
+        <div class="w-5 h-5 bg-slate-800 rounded"></div>
+        <h1 class="text-2xl font-semibold">Politics</h1>
+      </div>
+      <p class="text-m text-gray-500">Latest political news and analysis from Square Country</p>
+    </div>
+
+    <!-- Top Grid -->
+<div class="grid grid-cols-12 gap-6">
+
+<!-- Featured (Left) -->
+<a href="news-election.html" class="col-span-7">
+  <div class="relative rounded-3xl overflow-hidden shadow-lg">
+    <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620" class="w-full h-112 object-cover">
+
+    <!-- Overlay Text -->
+    <div class="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-black/50 via-transparent to-transparent">
+
+      <h2 class="text-white text-xl font-bold mt-2">
+        Prime Minister Announces Election Date for 17 October
+      </h2>
+      <p class="text-white text-sm mt-1">
+        Square Country is set to head to the polls in October
+      </p>
+      <div class="text-white text-xs mt-2">
+        Sarah Mitchell • 2 hours ago
+      </div>
+    </div>
+  </div>
+</a>
+
+<!-- Side Stories (Right) -->
+<div class="col-span-5 flex flex-col gap-4 h-96">
+<a href="news-freedoms-greens.html" class="flex-1 bg-white rounded-xl shadow p-3 flex gap-3">
+  <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab" class="w-16 h-16 rounded object-cover">
+  <div class="flex flex-col">
+    <span class="text-xs font-semibold text-gray-600 border border-gray-300 rounded px-2 py-0.5 mb-1 w-max">
+      Politics
+    </span>
+    <h3 class="text-sm font-bold line-clamp-2 hover:text-blue-600">
+      Freedoms and Greens Clash Over Climate Policy
+    </h3>
+    <span class="text-xs text-gray-400 mt-1">4 hours ago</span>
+  </div>
+</a>
+
+<a href="news-government-contracts.html" class="flex-1 bg-white rounded-xl shadow p-3 flex gap-3">
+  <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df" class="w-16 h-16 rounded object-cover">
+  <div class="flex flex-col">
+    <span class="text-xs font-semibold text-gray-600 border border-gray-300 rounded px-2 py-0.5 mb-1 w-max">
+      Politics
+    </span>
+    <h3 class="text-sm font-bold line-clamp-2 hover:text-blue-600">
+      Opposition Calls for Investigation into Government Contracts
+    </h3>
+    <span class="text-xs text-gray-400 mt-1">6 hours ago</span>
+  </div>
+</a>
+
+<div class="flex-1 bg-white rounded-xl shadow p-3 flex gap-3">
+  <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" class="w-16 h-16 rounded object-cover">
+  <div class="flex flex-col">
+    <span class="text-xs font-semibold text-gray-600 border border-gray-300 rounded px-2 py-0.5 mb-1 w-max">
+      Politics
+    </span>
+    <h3 class="text-sm font-bold line-clamp-2">
+      Local Councils Clash Over Land Development Plans
+    </h3>
+    <span class="text-xs text-gray-400 mt-1">6 hours ago</span>
+  </div>
+</div>
+
+<div class="flex-1 bg-white rounded-xl shadow p-3 flex gap-3">
+  <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" class="w-16 h-16 rounded object-cover">
+  <div class="flex flex-col">
+    <span class="text-xs font-semibold text-gray-600 border border-gray-300 rounded px-2 py-0.5 mb-1 w-max">
+      Politics
+    </span>
+    <h3 class="text-sm font-bold line-clamp-2">
+      Indigenous Leaders Call for Reform of National Heritage Laws
+    </h3>
+    <span class="text-xs text-gray-400 mt-1">6 hours ago</span>
+  </div>
+</div>
+</div>
+
+</div>
+
+
+<!-- Political Analysis + Elections Row -->
+<div class="grid grid-cols-3 gap-8 mt-10">
+
+
+  <!-- LEFT SIDE -->
+  <div class="col-span-2">
+
+    <!-- Section Header -->
+    <div class="flex items-center gap-3 mb-4">
+
+      <div class="w-10 h-10 bg-yellow-100 rounded-xl flex items-center justify-center">
+        <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M12 18h.01M9.09 9a3 3 0 115.82 1c0 2-3 2-3 4"></path>
+        </svg>
+      </div>
+
+      <h2 class="text-xl font-semibold text-gray-800">
+        Political Analysis
+      </h2>
+
+    </div>
+
+
+    <!-- Cards -->
+    <div class="grid grid-cols-2 gap-6">
+
+      <!-- Card 1 -->
+      <div class="bg-white border rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+
+        <div class="flex gap-4">
+
+          <img src="https://randomuser.me/api/portraits/men/32.jpg"
+               class="w-12 h-12 rounded-full">
+
+          <div class="flex-1">
+
+            <h3 class="font-semibold text-gray-900 leading-snug hover:text-blue-600">
+              Why the Repeal of the Climate Change Act Signals a New Era in Environmental Policy
+            </h3>
+
+            <p class="text-gray-500 text-sm mt-1">
+              The administration's bold move reflects shifting priorities and voter demands.
+            </p>
+
+            <div class="flex items-center justify-between mt-3">
+
+              <div>
+                <div class="text-sm font-medium text-gray-700">
+                  Dr. James Patterson
+                </div>
+
+                <div class="text-xs text-gray-400">
+                  Political Analyst
+                </div>
+              </div>
+
+              <div class="text-xs bg-gray-100 px-2 py-1 rounded">
+                6 min
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- Card 2 -->
+      <div class="bg-white border rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+
+        <div class="flex gap-4">
+
+          <img src="https://randomuser.me/api/portraits/women/44.jpg"
+               class="w-12 h-12 rounded-full">
+
+          <div class="flex-1">
+
+            <h3 class="font-semibold text-gray-900 leading-snug hover:text-blue-600">
+              Inside Square Country's Legislative System: How Laws Get Made
+            </h3>
+
+            <p class="text-gray-500 text-sm mt-1">
+              A look at how the laws that shape Square Country are passed in the House of Representatives.
+            </p>
+
+            <div class="flex items-center justify-between mt-3">
+
+              <div>
+                <div class="text-sm font-medium text-gray-700">
+                  Elena Rodriguez
+                </div>
+
+                <div class="text-xs text-gray-400">
+                  Senior Correspondent
+                </div>
+              </div>
+
+              <div class="text-xs bg-gray-100 px-2 py-1 rounded">
+                8 min
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+
+  <!-- RIGHT SIDE -->
+
+  
+  <!-- Next Elections -->
+  <div class="bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-2xl p-6 shadow-lg">
+
+    <h3 class="font-semibold mb-4">
+      Next Elections
+    </h3>
+
+
+    <div class="bg-white/10 rounded-xl p-4 mb-4">
+
+      <div class="font-medium">
+        Regional Council Elections
+      </div>
+
+      <div class="text-sm opacity-80">
+        May 9, 2026
+      </div>
+
+      <div class="w-full bg-white/20 rounded-full h-2 mt-2">
+        <div class="bg-white h-2 rounded-full w-4/5"></div>
+      </div>
+
+      <div class="text-xs mt-1 opacity-70">
+        82 days remaining
+      </div>
+
+    </div>
+
+
+
+    <div class="bg-white/10 rounded-xl p-4 mb-4">
+
+      <div class="font-medium">
+        National General Election
+      </div>
+
+      <div class="text-sm opacity-80">
+        October 17, 2026
+      </div>
+
+      <div class="w-full bg-white/20 rounded-full h-2 mt-2">
+        <div class="bg-white h-2 rounded-full w-1/3"></div>
+      </div>
+
+      <div class="text-xs mt-1 opacity-70">
+        243 days remaining
+      </div>
+
+    </div>
+
+
+
+<a href="https://tmitmac.github.io/scg-electoral/registration.html" class="block w-full bg-white text-blue-600 py-2 rounded-lg font-medium text-center">
+  Voter Registration
+</a>
+
+
+  </div>
+
+</div>
+
+
+
+<div class="grid grid-cols-3 gap-8 mt-1">
+
+  <!-- Parliament Tracker -->
+  <div class="col-span-2">
+
+
+  <!-- Header -->
+  <div class="flex items-center gap-3 mb-5">
+
+    <div class="w-10 h-10 bg-slate-900 rounded-xl flex items-center justify-center">
+
+      <!-- icon -->
+      <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M9 12h6M9 16h6M9 8h6M5 4h14v16H5z"/>
+      </svg>
+
+    </div>
+
+    <h2 class="text-xl font-semibold text-gray-800">
+      Parliament Tracker
+    </h2>
+
+  </div>
+
+
+
+  <!-- Stat Cards -->
+  <div class="grid grid-cols-3 gap-6 mb-6">
+
+
+    <!-- Active Bills -->
+    <div class="bg-white border rounded-2xl p-5 flex justify-between items-center">
+
+      <div>
+        <div class="text-sm text-gray-500">
+          Active Bills
+        </div>
+
+        <div class="text-3xl font-semibold text-gray-800">
+          37
+        </div>
+      </div>
+
+
+      <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+
+        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>
+        </svg>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- Sessions -->
+    <div class="bg-white border rounded-2xl p-5 flex justify-between items-center">
+
+      <div>
+        <div class="text-sm text-gray-500">
+          Sessions This Month
+        </div>
+
+        <div class="text-3xl font-semibold text-gray-800">
+          5
+        </div>
+      </div>
+
+
+      <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+          <i data-feather="check-square" class="text-white"></i>
+      </div>
+
+    </div>
+
+
+
+    <!-- Members -->
+    <div class="bg-white border rounded-2xl p-5 flex justify-between items-center">
+
+      <div>
+        <div class="text-sm text-gray-500">
+          Members Present
+        </div>
+
+        <div class="text-3xl font-semibold text-gray-800">
+          25/26
+        </div>
+      </div>
+
+
+      <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+
+        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M17 21v-2a4 4 0 00-3-3.87"/>
+          <path d="M7 21v-2a4 4 0 013-3.87"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+
+  <!-- Recent Legislation -->
+  <div class="bg-white border rounded-2xl overflow-hidden">
+
+
+<!-- Title -->
+<div class="px-6 py-4 border-b text-sm font-semibold text-gray-700 flex justify-between items-center">
+  <span>Recent Legislation</span>
+  <a href="https://tmitmac.github.io/scg-legislature/index.html" class="text-blue-600 underline">Legislation Archive</a>
+</div>
+
+
+
+
+
+    <!-- Bill 1 -->
+    <div class="px-6 py-5 flex justify-between items-center border-b">
+
+      <div>
+
+        <div class="font-medium text-gray-800">
+
+          
+            Criminal Responsibility (Age Reduction) Amendment Bill 2025
+
+        </div>
+
+
+        <div class="text-sm text-gray-500 mt-1">
+
+          Introduced: Dec 10, 2024
+          <span class="mx-2">•</span>
+          Sponsor: Rt. Hon. Trent McKenzie
+
+        </div>
+
+      </div>
+
+
+      <div class="bg-yellow-100 text-yellow-700 text-xs font-medium px-3 py-1 rounded-full">
+
+        Under Debate
+
+      </div>
+
+
+    </div>
+
+
+
+
+    <!-- Bill 2 -->
+    <div class="px-6 py-5 flex justify-between items-center border-b">
+
+      <div>
+
+        <div class="font-medium text-gray-800">
+
+          Defence Expansion Act 2025
+
+        </div>
+
+
+        <div class="text-sm text-gray-500 mt-1">
+
+          Introduced: Dec 8, 2024
+          <span class="mx-2">•</span>
+          Sponsor: Rt. Hon. Ryan Parker
+
+        </div>
+
+      </div>
+
+
+      <div class="bg-green-100 text-green-700 text-xs font-medium px-3 py-1 rounded-full">
+
+        Passed House
+
+      </div>
+
+
+
+    </div>
+
+
+
+
+    <!-- Bill 3 -->
+    <div class="px-6 py-5 flex justify-between items-center">
+
+      <div>
+
+        <div class="font-medium text-gray-800">
+
+          Federal Revenue and Tax Reform Act 2025
+
+        </div>
+
+
+        <div class="text-sm text-gray-500 mt-1">
+
+          Introduced: Dec 5, 2024
+          <span class="mx-2">•</span>
+          Sponsor: Rt. Hon. Trent McKenzie
+
+        </div>
+
+      </div>
+
+
+      <div class="bg-green-100 text-green-700 text-xs font-medium px-3 py-1 rounded-full">
+
+        Passed House
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+      <div class="flex items-center gap-3 mb-4 mt-10 px-2 max-w-[calc(66.666%-6px)]">
+      <div class="w-1 h-6 bg-[#2663eb] rounded"></div>
+      <span class="text-xl font-bold text-gray-700">Domestic Policy</span>
+    </div>
+
+
+      <!-- Cards grid -->
+<div class="grid grid-cols-3 gap-6">
+
+  <!-- Card -->
+  <article class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition cursor-pointer">
+    <div class="h-28 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1555848962-6e79363ec58f"
+           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+    </div>
+    <div class="p-3 flex flex-col gap-1.5">
+      <span class="inline-block w-fit text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Politics</span>
+      <h3 class="font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition">
+        Minimum Wage Hike Set to Take Effect Next Month
+      </h3>
+      <p class="text-sm text-slate-600">
+        The government announces a 5% rise in the national minimum wage starting next month.
+      </p>
+      <div class="flex gap-2 text-xs text-slate-500 mt-1">
+        <span>James Wright</span><span>•</span><span>4 hours ago</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card -->
+  <article class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition cursor-pointer">
+    <div class="h-28 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620"
+           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+    </div>
+    <div class="p-3 flex flex-col gap-1.5">
+      <span class="inline-block w-fit text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Politics</span>
+      <h3 class="font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition">
+        Regional Councillors Meet to Discuss Healthcare Coordination
+      </h3>
+      <p class="text-sm text-slate-600">
+        Summit focuses on resource sharing and emergency response protocols.
+      </p>
+      <div class="flex gap-2 text-xs text-slate-500 mt-1">
+        <span>Elena Rodriguez</span><span>•</span><span>5 hours ago</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card -->
+  <article class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition cursor-pointer">
+    <div class="h-28 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e"
+           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+    </div>
+    <div class="p-3 flex flex-col gap-1.5">
+      <span class="inline-block w-fit text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Politics</span>
+      <h3 class="font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition">
+        New Anti Corruption Taskforce Announced
+      </h3>
+      <p class="text-sm text-slate-600">
+        Attorney General unveils team to investigate government contract fraud.
+      </p>
+      <div class="flex gap-2 text-xs text-slate-500 mt-1">
+        <span>Michael Chen</span><span>•</span><span>6 hours ago</span>
+      </div>
+    </div>
+  </article>
+
+</div>
+
+<div class="flex items-center gap-3 mb-4 mt-10 px-2 max-w-[calc(66.666%-6px)]">
+      <div class="w-1 h-6 bg-[#16a349] rounded"></div>
+      <span class="text-xl font-bold text-gray-700">International Relations</span>
+    </div>
+
+
+      <!-- Cards grid -->
+<div class="grid grid-cols-3 gap-6">
+
+  <!-- Card -->
+  <article class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition cursor-pointer">
+    <div class="h-28 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1555848962-6e79363ec58f"
+           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+    </div>
+    <div class="p-3 flex flex-col gap-1.5">
+      <span class="inline-block w-fit text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Politics</span>
+      <h3 class="font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition">
+        Foreign Minister Visits Europe to Strengthen Security Ties
+      </h3>
+      <p class="text-sm text-slate-600">
+          The visit aims to enhance intelligence sharing and joint defense initiatives.
+        </p>
+      <div class="flex gap-2 text-xs text-slate-500 mt-1">
+        <span>James Wright</span><span>•</span><span>4 hours ago</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card -->
+  <article class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition cursor-pointer">
+    <div class="h-28 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620"
+           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+    </div>
+    <div class="p-3 flex flex-col gap-1.5">
+      <span class="inline-block w-fit text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Politics</span>
+      <h3 class="font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition">
+        New Visa Policy Introduced to Attract Skilled Migrants
+      </h3>
+      <p class="text-sm text-slate-600">
+        The government seeks to strengthen global talent pipelines amid labor shortages.
+      </p>
+      <div class="flex gap-2 text-xs text-slate-500 mt-1">
+        <span>Elena Rodriguez</span><span>•</span><span>5 hours ago</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card -->
+  <article class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition cursor-pointer">
+    <div class="h-28 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e"
+           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+    </div>
+    <div class="p-3 flex flex-col gap-1.5">
+      <span class="inline-block w-fit text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Politics</span>
+      <h3 class="font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition">
+        Government Condemns Cyberattacks on Allies
+      </h3>
+      <p class="text-sm text-slate-600">
+        Officials pledge to collaborate internationally to counter digital threats.
+      </p>
+      <div class="flex gap-2 text-xs text-slate-500 mt-1">
+        <span>Michael Chen</span><span>•</span><span>6 hours ago</span>
+      </div>
+    </div>
+  </article>
+
+</div>
+
+</div>
+
+<!-- Trending Now -->
+<div class="mt-6">
+
+  <!-- Header -->
+  <div class="flex items-center gap-2 mb-4">
+
+    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M3 17l6-6 4 4 8-8"/>
+    </svg>
+
+    <h3 class="font-semibold text-gray-800">
+      Trending Now
+    </h3>
+
+  </div>
+
+
+  <!-- List -->
+  <div class="space-y-4">
+
+
+    <!-- Item -->
+    <div class="flex justify-between items-center text-sm">
+
+      <div class="flex items-center gap-3">
+
+        <span class="text-gray-400 w-4">
+          1
+        </span>
+
+        <span class="text-gray-700 font-medium">
+          # Election2026
+        </span>
+
+      </div>
+
+      <span class="text-gray-400 text-xs">
+        24.5K posts
+      </span>
+
+    </div>
+
+
+
+    <!-- Item -->
+    <div class="flex justify-between items-center text-sm">
+
+      <div class="flex items-center gap-3">
+
+        <span class="text-gray-400 w-4">
+          2
+        </span>
+
+        <span class="text-gray-700 font-medium">
+          # SquareCountryEconomy
+        </span>
+
+      </div>
+
+      <span class="text-gray-400 text-xs">
+        18.2K posts
+      </span>
+
+    </div>
+
+
+
+    <!-- Item -->
+    <div class="flex justify-between items-center text-sm">
+
+      <div class="flex items-center gap-3">
+
+        <span class="text-gray-400 w-4">
+          3
+        </span>
+
+        <span class="text-gray-700 font-medium">
+          # FIFAWorldCup
+        </span>
+
+      </div>
+
+      <span class="text-gray-400 text-xs">
+        15.8K posts
+      </span>
+
+    </div>
+
+
+
+    <!-- Item -->
+    <div class="flex justify-between items-center text-sm">
+
+      <div class="flex items-center gap-3">
+
+        <span class="text-gray-400 w-4">
+          4
+        </span>
+
+        <span class="text-gray-700 font-medium">
+          # HonourIndigenous
+        </span>
+
+      </div>
+
+      <span class="text-gray-400 text-xs">
+        12.1K posts
+      </span>
+
+    </div>
+
+
+
+    <!-- Item -->
+    <div class="flex justify-between items-center text-sm">
+
+      <div class="flex items-center gap-3">
+
+        <span class="text-gray-400 w-4">
+          5
+        </span>
+
+        <span class="text-gray-700 font-medium">
+          # ClimateAction
+        </span>
+
+      </div>
+
+      <span class="text-gray-400 text-xs">
+        9.7K posts
+      </span>
+
+    </div>
+
+  </div>
+
+  <div class="flex items-center gap-8 mb-6 mt-10">
+        <div class="w-1 h-6 bg-red-500 rounded"></div>
+        <h3 class="font-bold text-slate-900">Most Read</h3>
+      </div>
+
+      <div class="flex flex-col gap-4">
+
+        <!-- Item -->
+        <div class="flex gap-4 items-start">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+               class="w-16 h-16 rounded-xl object-cover" />
+          <div>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">
+              Polling
+            </span>
+            <h4 class="text-sm font-bold leading-snug mt-1 hover:text-blue-600">
+              Poll Shows Rising Support for Climate Action
+            </h4>
+            <span class="text-xs text-slate-500">2 hours ago</span>
+          </div>
+        </div>
+
+        <!-- Item -->
+        <a href="news-government-contracts.html" class="flex gap-4 items-start">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+               class="w-16 h-16 rounded-xl object-cover" />
+          <div>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">
+              Judiciary
+            </span>
+            <h4 class="text-sm font-bold leading-snug mt-1 hover:text-blue-600">
+              Opposition Calls For Investigation Into Government Contracts
+            </h4>
+            <span class="text-xs text-slate-500">2 hours ago</span>
+          </div>
+        </a>
+
+        <!-- Item -->
+        <div class="flex gap-4 items-start">
+          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5"
+               class="w-16 h-16 rounded-xl object-cover" />
+          <div>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">
+              Elections
+            </span>
+            <h4 class="text-sm font-bold leading-snug mt-1 hover:text-blue-600">
+              Local Elections Draw Record Low Youth Turnout
+            </h4>
+            <span class="text-xs text-slate-500">3 hours ago</span>
+          </div>
+        </div>
+
+      </div>
+    </aside>
+
+
+  <div class="bg-slate-900 rounded-2xl p-6 shadow-sm border top-24 gap-8 mt-10">
+
+    <!-- Header -->
+    <div class="flex items-center gap-3 mb-3">
+      <h3 class="font-bold text-white">Political Briefing</h3>
+    </div>
+
+    <!-- Copy -->
+    <p class="text-sm text-slate-600 mb-5">
+      Your daily digest of political news and analysis.
+    </p>
+
+    <!-- Form -->
+    <form class="flex flex-col gap-3">
+      <input
+        type="email"
+        placeholder="Your email address"
+        class="w-full px-4 py-2 text-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 bg-[#1e293b] border-[#334155]"
+      />
+
+      <button
+        type="submit"
+        class="w-full bg-[#2663eb] text-white py-2 rounded-md text-sm font-bold hover:bg-[#1e4ed8] transition">
+        Subscribe
+      </button>
+    </form>
+
+  </div>
+
+
+
+  </div>
+
+</div>
+
+
+  </main>
+
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-gray-300 mt-16">
+  <div class="max-w-[1500px] mx-auto px-16 py-12 grid grid-cols-1 md:grid-cols-4 gap-10">
+
+    <!-- About Section -->
+    <div>
+      <h4 class="text-white font-bold text-lg mb-4">About Square Country News</h4>
+      <p class="text-sm leading-relaxed">
+        Square Country News delivers the latest news, business updates, sports coverage, and editorial insights from across the nation.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h4 class="text-white font-bold text-lg mb-4">Quick Links</h4>
+      <ul class="flex flex-col gap-2 text-sm">
+        <li><a href="#" class="hover:text-white transition">Home</a></li>
+        <li><a href="#" class="hover:text-white transition">Business</a></li>
+        <li><a href="sports.html" class="hover:text-white transition">Sports</a></li>
+        <li><a href="#" class="hover:text-white transition">Opinion</a></li>
+        <li><a href="#" class="hover:text-white transition">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div>
+      <h4 class="text-white font-bold text-lg mb-4">Contact Us</h4>
+      <p class="text-sm">123 Main Street, Square City</p>
+      <p class="text-sm mt-1">Email: <a href="mailto:info@squarecountrynews.com" class="hover:text-white transition">info@squarecountrynews.com</a></p>
+      <p class="text-sm mt-1">Phone: +64 3 123 4567</p>
+    </div>
+
+    <!-- Social Media -->
+    <div>
+      <h4 class="text-white font-bold text-lg mb-4">Follow Us</h4>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-white transition">
+          <i class="fab fa-facebook-f"></i> Facebook
+        </a>
+        <a href="#" class="hover:text-white transition">
+          <i class="fab fa-twitter"></i> Twitter
+        </a>
+        <a href="#" class="hover:text-white transition">
+          <i class="fab fa-instagram"></i> Instagram
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="border-t border-gray-700 mt-6 py-4 text-center text-sm text-gray-500">
+    &copy; 2026 Square Country News. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  document.getElementById("current-date").textContent =
+    new Date().toLocaleDateString(undefined, {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    });
+</script>
+
+</body>
+</html>
