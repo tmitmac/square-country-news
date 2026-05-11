@@ -6,113 +6,289 @@
   <title>Home | Square Country News</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://unpkg.com/@icon/weather-icons/weather-icons.css">
-  <style>
-    /* ---------- TICKER ---------- */
+<style>
+  /* ---------- GLOBAL ---------- */
 
-        .breaking-badge {
-  position: absolute;
-  left: 0;
-  top: 50%;             /* start from vertical center */
-  transform: translateY(-50%); /* center it vertically */
-  height: 30px;          /* shorter than full carousel */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 1rem;
-  background-color: #b31f21;
-  border-radius: 4px;   /* optional: rounded edges */
-  z-index: 60;
-}
+  * {
+    box-sizing: border-box;
+  }
 
-    .breaking-circle {
-      background-color: white;
-      color: #b31f21;
-      font-weight: bold;
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 0.5rem;
-      font-size: 12px;
+  html, body {
+    overflow-x: hidden;
+  }
+
+  body {
+    margin-top: 172px;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  /* ---------- TICKER ---------- */
+
+  .breaking-badge {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    background-color: #b31f21;
+    border-radius: 4px;
+    z-index: 60;
+  }
+
+  .breaking-circle {
+    background-color: white;
+    color: #b31f21;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.5rem;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .breaking-text {
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+
+  .carousel-red {
+    background-color: #cf2323;
+    height: 45px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+  }
+
+  .carousel-track {
+    display: flex;
+    width: max-content;
+    animation: slide 60s linear infinite;
+    align-items: center;
+    height: 100%;
+    padding-left: 170px;
+  }
+
+  .carousel-item {
+    padding: 0 2rem;
+    color: white;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .carousel-item:not(:last-child)::after {
+    content: " •";
+    margin-left: 4rem;
+  }
+
+  @keyframes slide {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* ---------- NAVY BAR ---------- */
+
+  .navy-bar {
+    position: fixed;
+    top: 45px;
+    left: 0;
+    width: 100%;
+    height: 37px;
+    background-color: #0e172a;
+    z-index: 40;
+  }
+
+  /* ---------- MAIN NAVBAR ---------- */
+
+  .main-navbar {
+    position: fixed;
+    top: 82px;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    z-index: 30;
+  }
+
+  /* ---------- MOBILE ---------- */
+
+  @media (max-width: 1024px) {
+
+    body {
+      margin-top: 150px;
     }
 
-    .breaking-text {
-      color: white;
-      font-weight: bold;
-      text-transform: uppercase;
-      font-size: 0.875rem;
-    }
-    .carousel-red {
-      background-color: #cf2323;
-      height: 45px;
-      overflow: hidden;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 50;
+    .main-navbar {
+      height: auto;
+      min-height: 78px;
+      padding: 12px 0;
     }
 
     .carousel-track {
-      display: flex;
-      width: 200%;
-      animation: slide 60s linear infinite;
-      align-items: center;
-      height: 100%;
+      padding-left: 140px;
+    }
+  }
+
+  @media (max-width: 768px) {
+
+    body {
+      margin-top: 145px;
+    }
+
+    .navy-bar {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+      font-size: 12px;
+    }
+
+    .navy-bar div {
+      gap: 0.75rem !important;
+    }
+
+    .main-navbar .max-w-\[1500px\] {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
     }
 
     .carousel-item {
-      padding: 0 2rem;
-      color: white;
-      font-size: 14px;
-      white-space: nowrap;
+      font-size: 13px;
+      padding: 0 1rem;
     }
 
     .carousel-item:not(:last-child)::after {
-      content: " •";
-      margin-left: 4rem;
+      margin-left: 2rem;
     }
 
-    @keyframes slide {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
+    .breaking-badge {
+      padding: 0 0.75rem;
     }
 
-    /* ---------- NAVY BAR ---------- */
-    .navy-bar {
-      position: fixed;
-      top: 45px;
-      left: 0;
-      width: 100%;
-      height: 37px;
-      background-color: #0e172a;
-      z-index: 40;
+    .breaking-text {
+      font-size: 12px;
     }
 
-    /* ---------- MAIN NAVBAR ---------- */
-    .main-navbar {
-      position: fixed;
-      top: 82px;
-      left: 0;
-      width: 100%;
-      height: 90px;
-      background: white;
-      border-bottom: 1px solid #e5e7eb;
-      z-index: 30;
+    section,
+    footer > div,
+    nav > div {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
     }
+
+    .lg\:sticky {
+      position: relative !important;
+      top: auto !important;
+    }
+
+    .absolute.bottom-10.right-10 {
+      position: absolute;
+      bottom: 1rem !important;
+      right: 1rem !important;
+      font-size: 13px;
+    }
+
+    h1 {
+      line-height: 1.2 !important;
+    }
+
+    .weather-temp {
+      font-size: 2rem !important;
+    }
+
+    aside.w-\[340px\] {
+      width: 100% !important;
+    }
+  }
+
+  @media (max-width: 640px) {
 
     body {
-      margin-top: 160px;
-    }
-
-    @media (max-width: 640px) {
-      body {
       margin-top: 140px;
     }
-}
-  </style>
+
+    .navy-bar {
+      height: auto;
+      min-height: 37px;
+      padding-top: 0.4rem;
+      padding-bottom: 0.4rem;
+      flex-direction: column;
+      gap: 0.25rem;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .main-navbar {
+      top: 95px;
+    }
+
+    .main-navbar .relative {
+      height: auto;
+      min-height: 72px;
+    }
+
+    .carousel-track {
+      padding-left: 125px;
+    }
+
+    .breaking-badge {
+      height: 26px;
+    }
+
+    .breaking-circle {
+      width: 16px;
+      height: 16px;
+      font-size: 10px;
+    }
+
+    .carousel-item {
+      font-size: 12px;
+    }
+
+    .text-4xl {
+      font-size: 2rem !important;
+    }
+
+    .h-\[300px\],
+    .sm\:h-\[420px\],
+    .lg\:h-\[520px\] {
+      height: 320px !important;
+    }
+
+    .grid-cols-4 {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      row-gap: 1rem;
+    }
+
+    .flex.items-center.justify-between {
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .max-w-\[calc\(66\.666\%-6px\)\] {
+      max-width: 100% !important;
+    }
+  }
+</style>
 </head>
 
 <body class="bg-gray-100">
@@ -139,7 +315,7 @@
   </div>
 
 <!-- NAVY BAR -->
-<div class="navy-bar flex items-center justify-between px-20 text-sm text-white">
+<div class="navy-bar flex items-center justify-between px-4 sm:px-6 lg:px-20 text-sm text-white">
   <span id="current-date"></span>
   <div class="flex items-center gap-5">
     <a href="#" class="hover:text-blue-400">Subscribe</a>
@@ -152,7 +328,7 @@
 
 <!-- MAIN NAVBAR -->
 <nav class="main-navbar">
-  <div class="relative max-w-[1500px] mx-auto h-full px-16 flex items-center">
+  <div class="relative max-w-[1500px] mx-auto h-full px-4 sm:px-6 lg:px-16 flex items-center">
 
     <!-- LOGO -->
     <a href="index.html" class="flex items-center gap-4">
@@ -179,7 +355,8 @@
 
     <!-- RIGHT CONTROLS -->
     <div class="absolute right-4 sm:right-6 lg:right-16 flex items-center gap-3 sm:gap-4">
-      <a href="search.html" class="text-slate-600 hover:text-black">
+     <div class="flex items-center gap-3">
+      <a href="search.html" class="text-slate-600 hover:text-black"> 
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
              viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -188,9 +365,15 @@
         <button class="lg:hidden text-slate-700">
   ☰
 </button>
-      </a>
+</a>
 
-      <a href="#"
+<button class="lg:hidden text-2xl text-slate-700">
+  ☰
+</button>
+
+</div>
+
+<a href="#"
          class="bg-[#0e172a] text-white px-5 py-2 rounded-md text-sm font-bold hover:bg-[#1e293b] transition">
         Subscribe
       </a>
@@ -203,7 +386,7 @@
 
 
 <!-- FEATURED STORY -->
-<section class="relative max-w-[1500px] mx-auto px-16 mt-6">
+<section class="relative max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-16 mt-6">
   <article class="relative rounded-2xl overflow-hidden shadow-lg">
 
     <!-- Background image -->
@@ -211,6 +394,7 @@
       src="images/hor.png"
       alt="Parliament chamber"
       class="w-full h-[300px] sm:h-[420px] lg:h-[520px] object-cover"
+      loading="lazy"
     />
 
     <!-- Dark overlay -->
@@ -244,7 +428,7 @@
 </div>
 
 <!-- Move the Read Full Story link outside the max-w-4xl container -->
-<a href="articles/news-coup.html"
+<a href="articles/news-new-democrats(1).html"
    class="absolute bottom-10 right-10
           flex items-center gap-2
           text-sm font-semibold text-white
@@ -263,7 +447,7 @@
 </section>
 
 <!-- NEWS + WEATHER SECTION -->
-<section class="max-w-[1500px] mx-auto px-16 mt-10">
+<section class="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-16 mt-10">
   <div class="flex flex-col gap-4">
 
     <!-- Top Stories Header spanning first two columns -->
@@ -281,8 +465,9 @@
         <div class="w-full overflow-hidden rounded-2xl shadow-lg h-80">
           <img src="https://images.unsplash.com/photo-1601972602237-8c79241e468b"
                alt="News 1"
-               class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
-        </div>
+               class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+              loading="lazy">
+              </div>
 
         <div class="mt-3 flex flex-col gap-2 items-start">
           <span class="inline-block border border-[#cbd5e1] bg-[#f3f4f6] text-[#64748b] text-xs font-semibold uppercase px-2 py-0.5 rounded">
@@ -309,8 +494,9 @@
         <div class="w-full overflow-hidden rounded-2xl shadow-lg h-80">
           <img src="https://images.unsplash.com/photo-1601972602237-8c79241e468b"
                alt="News 2"
-               class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
-        </div>
+               class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+               loading="lazy">
+              </div>
 
         <div class="mt-3 flex flex-col gap-2 items-start">
           <span class="inline-block border border-[#cbd5e1] bg-[#f3f4f6] text-[#64748b] text-xs font-semibold uppercase px-2 py-0.5 rounded">
@@ -376,7 +562,7 @@
 
 
 <!-- POLITICS SECTION -->
-<section class="max-w-[1500px] mx-auto px-16 mt-16">
+<section class="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-16 mt-16">
   <div class="flex flex-col lg:flex-row gap-10">
 
     <!-- LEFT: Politics stories -->
@@ -409,7 +595,8 @@
         <article class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition cursor-pointer">
           <div class="h-44 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1555848962-6e79363ec58f"
-                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                 loading="lazy" />
           </div>
           <div class="p-5 flex flex-col gap-2">
             <span class="inline-block w-fit text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">
@@ -433,7 +620,8 @@
         <article class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition cursor-pointer">
           <div class="h-44 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620"
-                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                 loading="lazy"/>
           </div>
           <div class="p-5 flex flex-col gap-2">
             <span class="inline-block w-fit text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">
@@ -457,7 +645,8 @@
         <article class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition cursor-pointer">
           <div class="h-44 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e"
-                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                 loading="lazy"/>
           </div>
           <div class="p-5 flex flex-col gap-2">
             <span class="inline-block w-fit text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">
@@ -495,7 +684,8 @@
         <!-- Item -->
         <div class="flex gap-4 items-start">
           <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
-               class="w-16 h-16 rounded-xl object-cover" />
+               class="w-16 h-16 rounded-xl object-cover" 
+               loading="lazy"/>
           <div>
             <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">
               Science
@@ -510,7 +700,8 @@
         <!-- Item -->
         <div class="flex gap-4 items-start">
           <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
-               class="w-16 h-16 rounded-xl object-cover" />
+               class="w-16 h-16 rounded-xl object-cover" 
+               loading="lazy"/>
           <div>
             <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">
               Business
@@ -525,7 +716,8 @@
         <!-- Item -->
         <div class="flex gap-4 items-start">
           <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5"
-               class="w-16 h-16 rounded-xl object-cover" />
+               class="w-16 h-16 rounded-xl object-cover" 
+               loading="lazy"/>
           <div>
             <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">
               Lifestyle
@@ -540,7 +732,8 @@
         <!-- Item -->
         <div class="flex gap-4 items-start">
           <img src="https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?w=400&q=80"
-               class="w-16 h-16 rounded-xl object-cover" />
+               class="w-16 h-16 rounded-xl object-cover" 
+               loading="lazy"/>
           <div>
             <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">
               Local
@@ -559,8 +752,8 @@
 </section>
 
 <!-- BUSINESS SECTION -->
-<section class="max-w-[1500px] mx-auto px-16 mt-16">
-  <div class="flex gap-10">
+<section class="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-16 mt-16">
+  <div class="flex flex-col lg:flex-row gap-10">
 
     <!-- LEFT: Business stories -->
     <div class="flex-1">
@@ -592,7 +785,8 @@
         <article class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition cursor-pointer">
           <div class="h-44 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1518770660439-4636190af475"
-                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                 loading="lazy"/>
           </div>
           <div class="p-5 flex flex-col gap-2">
             <span class="inline-block w-fit text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">
@@ -616,7 +810,8 @@
         <article class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition cursor-pointer">
           <div class="h-44 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1559526324-593bc073d938"
-                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                 loading="lazy"/>
           </div>
           <div class="p-5 flex flex-col gap-2">
             <span class="inline-block w-fit text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">
@@ -640,7 +835,8 @@
         <article class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition cursor-pointer">
           <div class="h-44 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a"
-                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                 loading="lazy"/>
           </div>
           <div class="p-5 flex flex-col gap-2">
             <span class="inline-block w-fit text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">
@@ -664,7 +860,7 @@
     </div>
 
 <!-- RIGHT: Newsletter sign-up -->
-<aside class="w-[340px]">
+<aside class="w-full lg:w-[340px]">
 
   <div class="bg-slate-900 rounded-2xl p-6 shadow-sm border lg:sticky lg:top-24 top-24">
 
@@ -702,7 +898,7 @@
 </section>
 
 <!-- SPORTS SECTION -->
-<section class="max-w-[1500px] mx-auto px-16 mt-16">
+<section class="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-16 mt-16">
   
   <!-- Header -->
   <div class="flex items-center justify-between mb-6">
@@ -731,7 +927,8 @@
     <article class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition cursor-pointer">
       <div class="h-44 overflow-hidden">
         <img src="https://images.unsplash.com/photo-1571019613914-85f342c53c5b"
-             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+             loading="lazy"/>
       </div>
       <div class="p-5 flex flex-col gap-2">
         <span class="inline-block w-fit text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">
@@ -755,7 +952,8 @@
     <article class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition cursor-pointer">
       <div class="h-44 overflow-hidden">
         <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b"
-             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+             loading="lazy"/>
       </div>
       <div class="p-5 flex flex-col gap-2">
         <span class="inline-block w-fit text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">
@@ -803,7 +1001,7 @@
 </section>
 
 <!-- ENTERTAINMENT SECTION -->
-<section class="max-w-[1500px] mx-auto px-16 mt-16">
+<section class="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-16 mt-16">
   
   <!-- Header -->
   <div class="flex items-center justify-between mb-6">
@@ -904,7 +1102,7 @@
 </section>
 
 <!-- FULL-WIDTH ADVERTISEMENT -->
-<section class="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-16 mt-10">
+<section class="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-4 sm:px-6 lg:px-16 mt-10">
   <div class="w-full bg-gray-200 rounded-2xl py-12 flex flex-col items-center justify-center h-10">
     <span class="text-m text-gray-700 mb-2">ADVERTISEMENT</span>
     <p class="text-sm text-gray-600">Your ad could be here. Contact advertising@squarecountrynews.com</p>
@@ -912,7 +1110,7 @@
 </section>
 
 <!-- OPINIONS & EDITORIAL SECTION -->
-<section class="max-w-[1500px] mx-auto px-16 mt-16">
+<section class="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-16 mt-16">
 
   <!-- Header -->
   <div class="flex items-center justify-between mb-6">
@@ -960,7 +1158,7 @@
 
 <!-- FOOTER -->
 <footer class="bg-gray-900 text-gray-300 mt-16">
-  <div class="max-w-[1500px] mx-auto px-16 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+  <div class="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-16 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
     <!-- About Section -->
     <div>
